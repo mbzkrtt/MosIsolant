@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Moselle Isolant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">Moselle Isolant</a>
+            </div>
+            
+            <nav class="nav">
+                <button class="burger-menu" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Accueil</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="apropos.html" class="nav-link">À propos</a></li>
+                    <li><a href="realisations.html" class="nav-link">Réalisations</a></li>
+                    <li><a href="contact.html" class="nav-link active">Devis</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Bannière de page -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Contactez-nous</h1>
+                <p>Devis gratuit sous 48h pour votre projet d'isolation</p>
+            </div>
+        </section>
+
+        <!-- Section Contact : formulaire + informations -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-container">
+                    <!-- COLONNE GAUCHE : Formulaire de contact -->
+                    <div class="contact-form">
+                        <h2>Demande de devis</h2>
+                        <p>Remplissez ce formulaire, nous vous répondrons dans les 48h.</p>
+                        
+                        <!-- Messages de confirmation/erreur -->
+                        <div class="success-message" id="successMessage">
+                            Votre message a été envoyé avec succès ! Nous vous répondrons dans les 48h.
+                        </div>
+                        <div class="error-message" id="errorMessage">
+                            Une erreur s'est produite. Veuillez réessayer.
+                        </div>
+                        
+                        <form 
+                            action="https://formspree.io/f/VOTRE_ID_FORMSPREE" 
+                            method="POST" 
+                            id="contactForm"
+                        >
+                            <!-- Ligne : Civilité -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="civility">Civilité *</label>
+                                    <select id="civility" name="civility" required>
+                                        <option value="">Sélectionnez</option>
+                                        <option value="M.">M.</option>
+                                        <option value="Mme">Mme</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Ligne : Nom et Prénom -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nom">Nom *</label>
+                                    <input 
+                                        type="text" 
+                                        id="nom" 
+                                        name="nom" 
+                                        required
+                                        placeholder="Dupont"
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="prenom">Prénom *</label>
+                                    <input 
+                                        type="text" 
+                                        id="prenom" 
+                                        name="prenom" 
+                                        required
+                                        placeholder="Jean"
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Ligne : Email et Téléphone -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        required
+                                        placeholder="jean.dupont@exemple.fr"
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="telephone">Téléphone *</label>
+                                    <input 
+                                        type="tel" 
+                                        id="telephone" 
+                                        name="telephone" 
+                                        required
+                                        placeholder="06 12 34 56 78"
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Ligne : Code postal -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="zipcode">Code postal *</label>
+                                    <input 
+                                        type="text" 
+                                        id="zipcode" 
+                                        name="zipcode" 
+                                        required
+                                        placeholder="78000"
+                                        pattern="[0-9]{5}"
+                                        title="Code postal sur 5 chiffres"
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Ligne : Type de projet et Surface -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="project">Type de projet *</label>
+                                    <select id="project" name="project" required>
+                                        <option value="">Sélectionnez un type</option>
+                                        <option value="combles">Isolation des combles</option>
+                                        <option value="murs">Isolation des murs</option>
+                                        <option value="sols">Isolation des sols</option>
+                                        <option value="autre">Autre / Projet global</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="surface">Surface estimée (m²)</label>
+                                    <input 
+                                        type="number" 
+                                        id="surface" 
+                                        name="surface" 
+                                        placeholder="120"
+                                        min="1"
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="form-group">
+                                <label for="message">Votre message *</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    rows="5" 
+                                    required
+                                    placeholder="Décrivez-nous votre projet..."
+                                ></textarea>
+                            </div>
+
+                            <!-- Case RGPD -->
+                            <div class="checkbox-group">
+                                <input 
+                                    type="checkbox" 
+                                    id="rgpd" 
+                                    name="rgpd" 
+                                    required
+                                >
+                                <label for="rgpd">
+                                    J'accepte que mes données personnelles soient utilisées pour me recontacter dans le cadre de ma demande. *
+                                </label>
+                            </div>
+
+                            <!-- Bouton d'envoi -->
+                            <button type="submit" class="btn-submit">
+                                Envoyer ma demande
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- COLONNE DROITE : Informations de contact -->
+                    <div class="contact-infos">
+                        <h2>Nos coordonnées</h2>
+                        
+                        <!-- Bloc téléphone -->
+                        <div class="contact-item">
+                            <h3>📞 Téléphone</h3>
+                            <p><a href="tel:0633769151">06 33 76 91 51</a></p>
+                        </div>
+
+                        <!-- Bloc email -->
+                        <div class="contact-item">
+                            <h3>✉️ Email</h3>
+                            <p><a href="mailto:senmur6@gmail.com">senmur6@gmail.com</a></p>
+                        </div>
+
+                        <!-- Bloc adresse -->
+                        <div class="contact-item">
+                            <h3>📍 Adresse</h3>
+                            <p>
+                                152 Rue des Moulins<br>
+                                57600 Forbach
+                            </p>
+                        </div>
+
+                        <!-- Bloc horaires -->
+                        <div class="contact-item">
+                            <h3>🕐 Horaires</h3>
+                            <p>
+                                Lundi - Vendredi : 8h - 18h<br>
+                                Samedi : 9h - 12h<br>
+                                Dimanche : Fermé
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>
+                        Tél : <a href="tel:0633769151">06 33 76 91 51</a><br>
+                        Email : <a href="mailto:senmur6@gmail.com">senmur6@gmail.com</a>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Horaires</h3>
+                    <p>
+                        Lundi - Vendredi : 8h - 18h<br>
+                        Samedi : 9h - 12h<br>
+                        Dimanche : Fermé
+                    </p>
+                </div>
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Moselle Isolant </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

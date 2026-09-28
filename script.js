@@ -199,59 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    
-    /* ========================================
-       4. ANIMATION DES CHIFFRES (STATS)
-       ======================================== */
-    
-    const stats = document.querySelectorAll('.stat-number');
-    let statsAnimated = false;
-    
-    function animateStats() {
-        if (statsAnimated) return;
-        
-        stats.forEach(stat => {
-            const finalValue = stat.textContent;
-            
-            // Si c'est un nombre, animer
-            if (!isNaN(parseInt(finalValue))) {
-                const duration = 2000;
-                const start = 0;
-                const end = parseInt(finalValue);
-                const increment = end / (duration / 16);
-                let current = start;
-                
-                stat.textContent = '0';
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= end) {
-                        stat.textContent = finalValue;
-                        clearInterval(timer);
-                    } else {
-                        stat.textContent = Math.floor(current);
-                    }
-                }, 16);
-            }
-        });
-        
-        statsAnimated = true;
-    }
-    
-    // Déclencher l'animation quand la section est visible
-    const statsSection = document.querySelector('.stats');
-    if (statsSection) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStats();
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        observer.observe(statsSection);
-    }
-    
+
     
     /* ========================================
        5. ANIMATION AU SCROLL (FADE IN)
